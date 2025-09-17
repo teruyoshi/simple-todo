@@ -1,13 +1,11 @@
 import './App.css'
+import AddTodo from './components/AddTodo'
 
 function App() {
   
   return (
     <>
-      <div>
-        <input type="text" />
-        <button>登録</button>
-      </div>
+      <AddTodo />
       <ul>
         <li>TODO</li>
       </ul>
