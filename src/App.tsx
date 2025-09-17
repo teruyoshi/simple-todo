@@ -4,8 +4,13 @@ function App() {
   
   return (
     <>
-      <input type="text" />
-      <button>登録</button>
+      <div>
+        <input type="text" />
+        <button>登録</button>
+      </div>
+      <ul>
+        <li>TODO</li>
+      </ul>
     </>
   )
 }
