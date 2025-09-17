@@ -6,21 +6,21 @@ type AddTodoProps = {
 }
 
 export default function AddTodo({addTodoHandler}: AddTodoProps) {
-    const [todo, setTodo] = useState<string>("")
-    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTodo(e.target.value)
-    }
+  const [todo, setTodo] = useState<string>("")
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTodo(e.target.value)
+  }
 
-    const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        addTodoHandler(todo)
-        setTodo("")
-    }
+  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    addTodoHandler(todo)
+    setTodo("")
+  }
 
-    return (
-      <form onSubmit={onSubmitHandler}>
-        <input type="text" value={todo} onChange={onChangeHandler}/>
-        <button type="submit">登録</button>
-      </form>
-    )
+  return (
+    <form onSubmit={onSubmitHandler}>
+      <input type="text" value={todo} onChange={onChangeHandler}/>
+      <button type="submit">登録</button>
+    </form>
+  )
 }
