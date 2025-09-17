@@ -1,7 +1,11 @@
-export default function TodoList() {
+type TodoListProps = {
+    todos: string[]
+}
+
+export default function TodoList({todos}: TodoListProps) {
     return (
       <ul>
-        <li>TODO</li>
+        {todos.map((todo, index) => (<li key={`${todo}${index}`}>{todo}</li>))}
       </ul>
     )
 }
