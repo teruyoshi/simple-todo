@@ -2,10 +2,10 @@ import type React from "react"
 import { useState } from "react"
 
 type AddTodoProps = {
-    addTodoHandler: (todo: string) => void
+  addTodoHandler: (todo: string) => void
 }
 
-export default function AddTodo({addTodoHandler}: AddTodoProps) {
+export default function AddTodo({ addTodoHandler }: AddTodoProps) {
   const [todo, setTodo] = useState<string>("")
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodo(e.target.value)
@@ -19,7 +19,7 @@ export default function AddTodo({addTodoHandler}: AddTodoProps) {
 
   return (
     <form onSubmit={onSubmitHandler}>
-      <input type="text" value={todo} onChange={onChangeHandler}/>
+      <input type="text" value={todo} onChange={onChangeHandler} />
       <button type="submit">登録</button>
     </form>
   )
