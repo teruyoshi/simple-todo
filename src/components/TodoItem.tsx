@@ -29,12 +29,13 @@ export default function TodoItem({ todo, changeTodoHandler }: TodoItemProps) {
           type="checkbox"
           checked={todo.done}
           onChange={onChangeCheckboxHandler}
+          disabled={todo.removed}
         />
         <input
           type="text"
           value={todo.text}
           onChange={onChangeTextBoxHandler}
-          disabled={todo.done}
+          disabled={todo.removed || todo.done}
         />
         <button type="button" onClick={onClickDeleteButtonHandler}>
           {todo.removed ? "復元" : "削除"}
