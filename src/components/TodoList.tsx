@@ -9,13 +9,15 @@ type TodoListProps = {
 export default function TodoList({ todos, changeTodoHandler }: TodoListProps) {
   return (
     <ul>
-      {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          changeTodoHandler={changeTodoHandler}
-        />
-      ))}
+      {todos
+        .filter((todo) => !todo.removed)
+        .map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            changeTodoHandler={changeTodoHandler}
+          />
+        ))}
     </ul>
   )
 }
