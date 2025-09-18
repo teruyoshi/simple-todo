@@ -17,6 +17,11 @@ export default function TodoItem({ todo, changeTodoHandler }: TodoItemProps) {
     changeTodoHandler({ ...todo, text: newText })
   }
 
+  const onClickDeleteButtonHandler = () => {
+    const toggledRemoved = !todo.removed
+    changeTodoHandler({ ...todo, removed: toggledRemoved })
+  }
+
   return (
     <li>
       <div>
@@ -31,6 +36,9 @@ export default function TodoItem({ todo, changeTodoHandler }: TodoItemProps) {
           onChange={onChangeTextBoxHandler}
           disabled={todo.done}
         />
+        <button type="button" onClick={onClickDeleteButtonHandler}>
+          {todo.removed ? "復元" : "削除"}
+        </button>
       </div>
     </li>
   )
