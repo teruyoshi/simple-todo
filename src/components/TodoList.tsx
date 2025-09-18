@@ -1,14 +1,20 @@
+import type { Todo } from "../App"
 import TodoItem from "./TodoItem"
 
 type TodoListProps = {
-  todos: string[]
+  todos: Todo[]
+  changeTodoHandler: (todo: Todo) => void
 }
 
-export default function TodoList({ todos }: TodoListProps) {
+export default function TodoList({ todos, changeTodoHandler }: TodoListProps) {
   return (
     <ul>
-      {todos.map((todo, index) => (
-        <TodoItem key={`${todo}${index}`} todo={todo} />
+      {todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          changeTodoHandler={changeTodoHandler}
+        />
       ))}
     </ul>
   )

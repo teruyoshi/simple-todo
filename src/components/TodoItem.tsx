@@ -1,20 +1,37 @@
-import { useState } from "react"
+import type React from "react"
+import type { Todo } from "../App"
 
 type TodoItemProps = {
-  todo: string
+  todo: Todo
+  changeTodoHandler: (todo: Todo) => void
 }
 
-export default function TodoItem({ todo }: TodoItemProps) {
-  const [checked, setCheck] = useState<boolean>(false)
+export default function TodoItem({ todo, changeTodoHandler }: TodoItemProps) {
+  const onChangeCheckboxHandler = () => {
+    const toggledDone = !todo.done
+    changeTodoHandler({ ...todo, done: toggledDone })
+  }
 
-  const onClickHandler = () => {
-    setCheck((checked: boolean) => !checked)
+  const onChangeTextBoxHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newText = e.target.value
+    changeTodoHandler({ ...todo, text: newText })
   }
 
   return (
     <li>
-      <input type="checkbox" checked={checked} onClick={onClickHandler} />
-      {todo}
+      <div>
+        <input
+          type="checkbox"
+          checked={todo.done}
+          onChange={onChangeCheckboxHandler}
+        />
+        <input
+          type="text"
+          value={todo.text}
+          onChange={onChangeTextBoxHandler}
+          disabled={todo.done}
+        />
+      </div>
     </li>
   )
 }
